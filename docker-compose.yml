@@ -17,7 +17,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
-      - '3001:3000' 
+      - '3001:3000'
     networks:
       - app-network
 
@@ -34,6 +34,8 @@ services:
     container_name: backend
     ports:
       - '8000:8000'
+    volumes:
+      - backend_data:/app/data   
     networks:
       - app-network
 
@@ -50,3 +52,6 @@ services:
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  backend_data: 'fusion-data'                 
